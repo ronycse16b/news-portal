@@ -28,7 +28,7 @@ const displayNewsCatagory = newses =>{
           <div class="col-md-8">
           <div class="card-body">
           <h5 class="card-title">${news.title}</h5>
-          <p class="card-text text-muted  ">${news.details.slice(1,300,"...")}</p>
+          <p class="card-text text-muted text-truncate  w-75"  >${news.details}</p>
             <div class=" d-flex  align-items-center">
             <div class="d-flex align-items-center">
             <img src="${news.author.img}" class="author_imge-control" alt="">
