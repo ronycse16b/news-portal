@@ -9,21 +9,21 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    <!-- fontawosome cdn -->
-    <script src="https://kit.fontawesome.com/6deda75a70.js" crossorigin="anonymous"></script>
+  <!-- fontawosome cdn -->
+  <script src="https://kit.fontawesome.com/6deda75a70.js" crossorigin="anonymous"></script>
   <style>
-
     hr {
       height: 4px;
       background-color: #838383;
       border: none;
     }
-    .author_imge-control{
+
+    .author_imge-control {
       width: 8%;
       border-radius: 50%;
     }
 
-    .card{
+    .card {
       cursor: pointer;
     }
   </style>
@@ -33,7 +33,7 @@
 
 <body class="bg-light">
   <header class="">
-    
+
     <!-- top-header with website name -->
     <section>
       <nav class="navbar navbar-light bg-light container mt-3">
@@ -44,8 +44,8 @@
           </div>
 
           <div class="d-flex  align-items-center">
-            <a class="nav-link ms-4 " href="">News</a>
-            <a class="nav-link ms-4" href="">blog</a>
+            <a class="active fw-bold text-primary nav-link ms-4 " href="">News</a>
+            <a class="nav-link ms-4" href="./blog.html">blog</a>
             <img src="./images/Avatar.png" class="ms-4" alt="">
           </div>
 
@@ -65,36 +65,39 @@
           <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0  fs-5">
               <li class="nav-item ">
-                <a class="nav-link active" "loadNewses('08')" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" onclick="loadNewses('08');" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item ms-3">
                 <a class="nav-link" onclick="loadNewses('01');" href="#">Breaking News</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#"  onclick="loadNewses('02');" tabindex="-1" aria-disabled="true">Regular News</a>
+                <a class="nav-link" href="#" onclick="loadNewses('02');" tabindex="-1" aria-disabled="true">Regular
+                  News</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#"  onclick="loadNewses('03');" tabindex="-1" aria-disabled="true">International News</a>
+                <a class="nav-link" href="#" onclick="loadNewses('03');" tabindex="-1"
+                  aria-disabled="true">International News</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#"  onclick="loadNewses('04');" tabindex="-1">Sports</a>
+                <a class="nav-link" href="#" onclick="loadNewses('04');" tabindex="-1">Sports</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#"  onclick="loadNewses('05');" tabindex="-1" aria-disabled="true">Entertainment</a>
+                <a class="nav-link" href="#" onclick="loadNewses('05');" tabindex="-1"
+                  aria-disabled="true">Entertainment</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#"  onclick="loadNewses('06');" tabindex="-1" aria-disabled="true">Culture</a>
+                <a class="nav-link" href="#" onclick="loadNewses('06');" tabindex="-1" aria-disabled="true">Culture</a>
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#"  onclick="loadNewses('07');" tabindex="-1" aria-disabled="true">Arts</a>
+                <a class="nav-link" href="#" onclick="loadNewses('07');" tabindex="-1" aria-disabled="true">Arts</a>
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#"  onclick="loadNewses('08');" tabindex="-1" aria-disabled="true">All News</a>
+                <a class="nav-link" href="#" onclick="loadNewses('08');" tabindex="-1" aria-disabled="true">All News</a>
               </li>
             </ul>
 
@@ -114,48 +117,50 @@
 
     <!-- search-section -->
     <section class="mt-4">
-      <div class="mb-3 w-100">
-        <span  class="form-control" placeholder="Search write your text here"> No data</span>
-      
-        </div>
+      <div class="mb-3 w-100 d-none">
+        <span id="massage" class="form-control text-warning fw-bold" placeholder="Search write your text here"> No data
+          Found</span>
+
+      </div>
       </div>
     </section>
     <!-- news blog display-->
-   
-<!-- Modal -->
-<div class="modal fade" id="showDetailsNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="showDetailsNewsLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="showDetailsNewsLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <img id="details_imge" src="" style="width:100%; height:300PX;">
-    
-        <p id="detailsnews"></p>
-        <span class="text-primary fw-bold" id="imgeAutor"></span> <br>
-        <img id="detailsPublisher_imge" src="" style="width:30PX; height:10%; border-radius: 50%;">
-        <p id="publish-date"></p>
-      
-      </div>
-      <div class="modal-footer ">
-        
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        
+
+    <!-- Modal -->
+    <div class="modal fade" id="showDetailsNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="showDetailsNewsLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="showDetailsNewsLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img id="details_imge" src="" style="width:100%; height:300PX;">
+
+            <p id="detailsnews"></p>
+            <span class="text-primary fw-bold" id="imgeAutor"></span> <br>
+            <img id="detailsPublisher_imge" src="" style="width:30PX; height:10%; border-radius: 50%;">
+            <p id="publish-date"></p>
+
+          </div>
+          <div class="modal-footer ">
+
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</section>
+    </section>
 
     <section>
 
-      
-        <div  id="news-container"   >
-    
-        </div>
-     
+
+      <div id="news-container">
+
+      </div>
+
     </section>
   </main>
 
@@ -166,7 +171,7 @@
 
   <!-- my operation js link  -->
   <script src="./js/function.js"></script>
-  
+
   <!-- bootstarp javascript file  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
@@ -174,4 +179,3 @@
 </body>
 
 </html>
-

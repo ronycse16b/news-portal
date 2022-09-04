@@ -1,11 +1,12 @@
 
 const loadNewses = async (catagory) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${catagory}`
-  
+
   // use error handler
   try {
     const res = await fetch(url);
     const data = await res.json();
+
 
     displayNewsCatagory(data.data);
 
@@ -26,7 +27,8 @@ const displayNewsCatagory = newses => {
     const catagoryDiv = document.createElement('div');
 
 
-// set inner html 
+
+    // set inner html 
     catagoryDiv.innerHTML = `
      
     <div class="card mt-4 w-100 " data-bs-toggle="modal" data-bs-target="#showDetailsNews " onclick="newsDetailsShow('${news._id}');" >
@@ -38,7 +40,7 @@ const displayNewsCatagory = newses => {
           <div class="col-md-8">
           <div class="card-body">
           <h5 class="card-title">${news.title}</h5>
-          <p class="card-text text-muted   w-75"  >${news.details.slice(0, 200)}</p>
+          <p class="card-text text-muted  text-warp" >${news.details.slice(0, 350) + "....."}</p>
             <div class=" d-flex  align-items-center">
             <div class="d-flex align-items-center ">
             <img src="${news.author.img}" class="author_imge-control" alt="">
@@ -60,7 +62,7 @@ const displayNewsCatagory = newses => {
       
         
         `;
-        // appned push 
+    // appned push 
     catagoryContainer.appendChild(catagoryDiv);
   })
 }
@@ -102,12 +104,3 @@ const showDetailsDisplay = newsid => {
 }
 
 
-// document.getElementById("btn-search").addEventListener("click",function(){
-// const searchFild =document.getElementById("search-input-fild");
-// const catagory = searchFild.value;
-
-
-// loadNewses(catagory);
-
-
-// })
