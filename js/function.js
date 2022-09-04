@@ -1,25 +1,33 @@
 
-const loadNewses = async(catagory) =>{
-    const url =`https://openapi.programming-hero.com/api/news/category/${catagory}`
-    const res =await fetch(url);
+const loadNewses = async (catagory) => {
+  const url = `https://openapi.programming-hero.com/api/news/category/${catagory}`
+  
+  // use error handler
+  try {
+    const res = await fetch(url);
     const data = await res.json();
 
-     displayNewsCatagory(data.data);
+    displayNewsCatagory(data.data);
+
+  }
+  catch (error) {
+    console.log(error);
+
+  }
+}
+
+// display catagory 
+const displayNewsCatagory = newses => {
+
+  const catagoryContainer = document.getElementById("news-container");
+
+  catagoryContainer.textContent = '';
+  newses.forEach(news => {
+    const catagoryDiv = document.createElement('div');
 
 
- }
-
-const displayNewsCatagory = newses =>{
-
-    const catagoryContainer = document.getElementById("news-container");
-    
-     catagoryContainer.textContent = '';
-    newses.forEach(news =>{
-        const catagoryDiv = document.createElement('div');
-        // catagoryDiv.classList.add('row' ,'g-0');
-      
-
-        catagoryDiv.innerHTML = `
+// set inner html 
+    catagoryDiv.innerHTML = `
      
     <div class="card mt-4 w-100 " data-bs-toggle="modal" data-bs-target="#showDetailsNews " onclick="newsDetailsShow('${news._id}');" >
    
@@ -30,7 +38,7 @@ const displayNewsCatagory = newses =>{
           <div class="col-md-8">
           <div class="card-body">
           <h5 class="card-title">${news.title}</h5>
-          <p class="card-text text-muted   w-75"  >${news.details.slice(0,200)}</p>
+          <p class="card-text text-muted   w-75"  >${news.details.slice(0, 200)}</p>
             <div class=" d-flex  align-items-center">
             <div class="d-flex align-items-center ">
             <img src="${news.author.img}" class="author_imge-control" alt="">
@@ -52,44 +60,45 @@ const displayNewsCatagory = newses =>{
       
         
         `;
-        catagoryContainer.appendChild(catagoryDiv);
-    })
+        // appned push 
+    catagoryContainer.appendChild(catagoryDiv);
+  })
 }
 
 
 
-
-const newsDetailsShow = async(news_id) =>{
-  const url =`https://openapi.programming-hero.com/api/news/${news_id}`
-  const res =await fetch(url);
+// news details
+const newsDetailsShow = async (news_id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`
+  const res = await fetch(url);
   const data = await res.json();
 
 
-  newsDisplay(data.data[0]);
+  showDetailsDisplay(data.data[0]);
 
 
 }
 
-const newsDisplay = newsid =>{
+const showDetailsDisplay = newsid => {
 
- const modalDetails = document.getElementById("showDetailsNewsLabel");
-    modalDetails.innerText= newsid.title;
- const detailsImage= document.getElementById("details_imge");
-   detailsImage.src =newsid.thumbnail_url;
+  const modalDetails = document.getElementById("showDetailsNewsLabel");
+  modalDetails.innerText = newsid.title;
+  const detailsImage = document.getElementById("details_imge");
+  detailsImage.src = newsid.thumbnail_url;
 
-    const detailsNews =document.getElementById("detailsnews");
-    detailsNews.innerText = newsid.details;
+  const detailsNews = document.getElementById("detailsnews");
+  detailsNews.innerText = newsid.details;
 
-    const newsAuthor = document.getElementById("imgeAutor");
-     newsAuthor.innerText ="News Publish by :"+ newsid.author.name;
-     
+  const newsAuthor = document.getElementById("imgeAutor");
+  newsAuthor.innerText = "News Publish by :" + newsid.author.name;
 
-    const newsPublishDate = document.getElementById("publish-date");
-    newsPublishDate.innerText = newsid.author.published_date;
-    const detailsPublisherImage= document.getElementById("detailsPublisher_imge");
-   detailsPublisherImage.src =newsid.author.img
 
-console.log(newsid);
+  const newsPublishDate = document.getElementById("publish-date");
+  newsPublishDate.innerText = newsid.author.published_date;
+  const detailsPublisherImage = document.getElementById("detailsPublisher_imge");
+  detailsPublisherImage.src = newsid.author.img
+
+  console.log(newsid);
 }
 
 
