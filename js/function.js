@@ -1,11 +1,11 @@
 
-const loadNewses = async() =>{
-    const url =`https://openapi.programming-hero.com/api/news/category/01`
+const loadNewses = async(catagory) =>{
+    const url =`https://openapi.programming-hero.com/api/news/category/${catagory}`
     const res =await fetch(url);
     const data = await res.json();
 
-    displayNewsCatagory(data.data);
-console.log(data.data);
+     displayNewsCatagory(data.data);
+     console.log(data.data);
 
  }
 
@@ -13,6 +13,7 @@ const displayNewsCatagory = newses =>{
 
     const catagoryContainer = document.getElementById("news-container");
     
+     catagoryContainer.textContent = '';
     newses.forEach(news =>{
         const catagoryDiv = document.createElement('div');
         // catagoryDiv.classList.add('row' ,'g-0');
@@ -20,7 +21,7 @@ const displayNewsCatagory = newses =>{
 
         catagoryDiv.innerHTML = `
      
-    <div class="card mt-4 w-100">
+    <div class="card mt-4 w-100 " data-bs-toggle="modal" data-bs-target="#showDetailsNews">
         <div class ="row g-0 ">
           <div class="col-md-4">
             <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
@@ -28,9 +29,9 @@ const displayNewsCatagory = newses =>{
           <div class="col-md-8">
           <div class="card-body">
           <h5 class="card-title">${news.title}</h5>
-          <p class="card-text text-muted text-truncate  w-75"  >${news.details}</p>
+          <p class="card-text text-muted   w-75"  >${news.details.slice(0,200)}</p>
             <div class=" d-flex  align-items-center">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center ">
             <img src="${news.author.img}" class="author_imge-control" alt="">
            
             <div class=" text-muted ms-3">
@@ -41,7 +42,8 @@ const displayNewsCatagory = newses =>{
 
             <i class="fa-solid fa-eye "></i><span>${news.total_view}</span>
           
-            <i class="ms-5  fa-solid fa-arrow-right"></i>
+  
+            <i class="ms-5 fs-3  fa-solid fa-arrow-right"></i>
             </div>
           
         </div>
@@ -54,13 +56,19 @@ const displayNewsCatagory = newses =>{
     })
 }
 
+
+
+
+
+
+
+
 // document.getElementById("btn-search").addEventListener("click",function(){
 // const searchFild =document.getElementById("search-input-fild");
-// const searchText = searchFild.value;
-// console.log(searchText);
+// const catagory = searchFild.value;
 
-// loadNewses(searchText);
+
+// loadNewses(catagory);
 
 
 // })
- loadNewses();
