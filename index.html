@@ -11,6 +11,7 @@
 
   <!-- fontawosome cdn -->
   <script src="https://kit.fontawesome.com/6deda75a70.js" crossorigin="anonymous"></script>
+  <!-- inline style -->
   <style>
     hr {
       height: 4px;
@@ -32,6 +33,8 @@
 </head>
 
 <body class="bg-light">
+
+
   <header class="">
 
     <!-- top-header with website name -->
@@ -65,39 +68,43 @@
           <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0  fs-5">
               <li class="nav-item ">
-                <a class="nav-link active" onclick="loadNewses('08');" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" onload="loadNewses('08')" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" onclick="loadNewses('01');" href="#">Breaking News</a>
+                <a class="nav-link" onclick="loadNewses('01'),togleSpiner(true);" href="#">Breaking News</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#" onclick="loadNewses('02');" tabindex="-1" aria-disabled="true">Regular
+                <a class="nav-link" href="#" onclick="loadNewses('02'),togleSpiner(true);" tabindex="-1"
+                  aria-disabled="true">Regular
                   News</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#" onclick="loadNewses('03');" tabindex="-1"
+                <a class="nav-link" href="#" onclick="loadNewses('03'),togleSpiner(true);" tabindex="-1"
                   aria-disabled="true">International News</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#" onclick="loadNewses('04');" tabindex="-1">Sports</a>
+                <a class="nav-link" href="#" onclick="loadNewses('04'),togleSpiner(true);" tabindex="-1">Sports</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#" onclick="loadNewses('05');" tabindex="-1"
+                <a class="nav-link" href="#" onclick="loadNewses('05'),togleSpiner(true);" tabindex="-1"
                   aria-disabled="true">Entertainment</a>
               </li>
 
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#" onclick="loadNewses('06');" tabindex="-1" aria-disabled="true">Culture</a>
+                <a class="nav-link" href="#" onclick="loadNewses('06'),togleSpiner(true);" tabindex="-1"
+                  aria-disabled="true">Culture</a>
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#" onclick="loadNewses('07');" tabindex="-1" aria-disabled="true">Arts</a>
+                <a class="nav-link" href="#" onclick="loadNewses('07'),togleSpiner(true);" tabindex="-1"
+                  aria-disabled="true">Arts</a>
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" href="#" onclick="loadNewses('08');" tabindex="-1" aria-disabled="true">All News</a>
+                <a class="nav-link" href="#" onclick="loadNewses('08'),togleSpiner(true);" tabindex="-1"
+                  aria-disabled="true">All News</a>
               </li>
             </ul>
 
@@ -115,16 +122,36 @@
 
 
 
-    <!-- search-section -->
+    <!-- no Data-section -->
     <section class="mt-4">
-      <div class="mb-3 w-100 d-none">
-        <span id="massage" class="form-control text-warning fw-bold" placeholder="Search write your text here"> No data
+      <div class="mb-3 w-100 d-none bg-warning " id="massage">
+
+        <span class=" bg-warning p-1 d-inline-block fs-4  text-dark fw-bold "> No data
           Found</span>
 
       </div>
       </div>
     </section>
-    <!-- news blog display-->
+
+    <!-- iteams count section  -->
+    <section class="mt-4">
+      <div class="mb-3 w-100 d-none  bg-white" id="iteams-count">
+        <span id="massage-innertext" class="  p-1 d-inline-block fs-4  text-dark fw-bold "> </span>
+      </div>
+      </div>
+    </section>
+
+
+
+    <!-- loading -->
+    <section id="loader" class="d-none">
+      <div class="text-center d-flex justify-content-center align-items-center" style="height:400px;">
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+    </section>
 
     <!-- Modal -->
     <div class="modal fade" id="showDetailsNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -154,9 +181,8 @@
     </div>
     </section>
 
+    <!-- news blog display-->
     <section>
-
-
       <div id="news-container">
 
       </div>
@@ -176,6 +202,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
+
+  <!-- by defult show execute load news-->
+  <script>
+    loadNewses('08');
+  </script>
 </body>
 
 </html>

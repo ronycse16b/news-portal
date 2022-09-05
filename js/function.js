@@ -7,7 +7,7 @@ const loadNewses = async (catagory) => {
     const res = await fetch(url);
     const data = await res.json();
 
-
+    // call displayNewsCatagorya
     displayNewsCatagory(data.data);
 
   }
@@ -20,8 +20,35 @@ const loadNewses = async (catagory) => {
 // display catagory 
 const displayNewsCatagory = newses => {
 
-  const catagoryContainer = document.getElementById("news-container");
+  // news iteam count 
+  const iteamsCount = document.getElementById("iteams-count");
 
+  if (newses.length > 0) {
+    const iteamCountInnertext = document.getElementById("massage-innertext");
+    iteamCountInnertext.innerText = "Total : " + newses.length + " Items News in this Catagory";
+
+
+    iteamsCount.classList.remove('d-none');
+  }
+  else {
+    iteamsCount.classList.add('d-none');
+  }
+
+
+  // Massage display function 
+  const massage = document.getElementById("massage");
+  if (newses.length === 0) {
+
+    massage.classList.remove('d-none');
+  }
+  else {
+    massage.classList.add('d-none');
+  }
+
+
+
+  const catagoryContainer = document.getElementById("news-container");
+  // remove old data 
   catagoryContainer.textContent = '';
   newses.forEach(news => {
     const catagoryDiv = document.createElement('div');
@@ -46,12 +73,12 @@ const displayNewsCatagory = newses => {
             <img src="${news.author.img}" class="author_imge-control" alt="">
            
             <div class=" text-muted ms-3">
-            <h6>${news.author.name} </h6>
-            ${news.author.published_date}
+            <h6>${news.author.name ? news.author.name : 'No data Found'} </h6>
+            ${news.author.published_date ? news.author.published_date : "No data found"}
           </div>
             </div>
 
-            <i class="fa-solid fa-eye "></i><span>${news.total_view}</span>
+            <i class="fa-solid fa-eye "></i><span>${news.total_view ? news.total_view : 'No data'}</span>
          
             <i class="ms-5 fs-3  fa-solid fa-arrow-right"></i>
             </div>
@@ -65,11 +92,14 @@ const displayNewsCatagory = newses => {
     // appned push 
     catagoryContainer.appendChild(catagoryDiv);
   })
+
+  // loader spiners stop
+  togleSpiner(false);
 }
 
 
 
-// news details
+// news details fetch
 const newsDetailsShow = async (news_id) => {
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`
   const res = await fetch(url);
@@ -80,7 +110,7 @@ const newsDetailsShow = async (news_id) => {
 
 
 }
-
+//  show details funtion 
 const showDetailsDisplay = newsid => {
 
   const modalDetails = document.getElementById("showDetailsNewsLabel");
@@ -95,12 +125,23 @@ const showDetailsDisplay = newsid => {
   newsAuthor.innerText = "News Publish by :" + newsid.author.name;
 
 
+
   const newsPublishDate = document.getElementById("publish-date");
   newsPublishDate.innerText = newsid.author.published_date;
   const detailsPublisherImage = document.getElementById("detailsPublisher_imge");
   detailsPublisherImage.src = newsid.author.img
 
-  console.log(newsid);
+
 }
 
 
+// is loading function 
+const togleSpiner = isLoading => {
+  const loadingSection = document.getElementById("loader");
+  if (isLoading) {
+    loadingSection.classList.remove('d-none');
+
+  } else {
+    loadingSection.classList.add('d-none');
+  }
+}
