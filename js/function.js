@@ -67,10 +67,10 @@ const displayNewsCatagory = newses => {
           <div class="col-md-8">
           <div class="card-body">
           <h5 class="card-title">${news.title}</h5>
-          <p class="card-text text-muted  text-warp" >${news.details.slice(0, 350) + "....."}</p>
+          <p class="card-text text-muted  text-warp" >${news.details.slice(0, 280) + "....."}</p>
             <div class=" d-flex  align-items-center">
             <div class="d-flex align-items-center ">
-            <img src="${news.author.img}" class="author_imge-control" alt="">
+            <img src="${news.author.img}" class="author_imge-control img-fluid" alt="">
            
             <div class=" text-muted ms-3">
             <h6>${news.author.name ? news.author.name : 'No data Found'} </h6>

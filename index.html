@@ -2,17 +2,22 @@
 <html lang="en">
 
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Update News</title>
-  <!-- bootstarp cdn -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-  <!-- fontawosome cdn -->
-  <script src="https://kit.fontawesome.com/6deda75a70.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>The Update news</title>
+
   <!-- inline style -->
   <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
     hr {
       height: 4px;
       background-color: #838383;
@@ -30,13 +35,11 @@
   </style>
 
 
+
 </head>
 
-<body class="bg-light">
-
-
-  <header class="">
-
+<body>
+  <header>
     <!-- top-header with website name -->
     <section>
       <nav class="navbar navbar-light bg-light container mt-3">
@@ -56,17 +59,23 @@
 
       </nav>
     </section>
-
     <!-- horigental line  -->
     <hr class="container ">
 
     <!-- navber menu after horizantal line  -->
     <section>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light m-2  ">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light text-primary ">
         <div class="container">
 
-          <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0  fs-5">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mb-2 mb-lg-0  fs-5 ">
               <li class="nav-item ">
                 <a class="nav-link active" onload="loadNewses('08')" aria-current="page" href="#">Home</a>
               </li>
@@ -104,20 +113,16 @@
               </li>
               <li class="nav-item ms-3">
                 <a class="nav-link" href="#" onclick="loadNewses('08'),togleSpiner(true);" tabindex="-1"
-                  aria-disabled="true">All News</a>
+                  aria-disabled="true">All
+                  News</a>
               </li>
             </ul>
-
           </div>
-
         </div>
-
       </nav>
-
     </section>
 
   </header>
-
   <main class="container">
 
 
@@ -135,7 +140,7 @@
 
     <!-- iteams count section  -->
     <section class="mt-4">
-      <div class="mb-3 w-100 d-none  bg-white" id="iteams-count">
+      <div class="mb-3 w-100 d-none p-1 rounded bg-white" id="iteams-count">
         <span id="massage-innertext" class="  p-1 d-inline-block fs-4  text-dark fw-bold "> </span>
       </div>
       </div>
@@ -198,15 +203,18 @@
   <!-- my operation js link  -->
   <script src="./js/function.js"></script>
 
-  <!-- bootstarp javascript file  -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
   <!-- by defult show execute load news-->
   <script>
     loadNewses('08');
   </script>
+
+
 </body>
 
 </html>
